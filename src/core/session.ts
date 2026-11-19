@@ -10,8 +10,10 @@ export async function saveSession(): Promise<void> {
 export async function loadSession(): Promise<{ blob: Blob; when: number; parts: number } | null> {
   try { const db = await openDb(); const tx = db.transaction(STORE, 'readonly'); const req = tx.objectStore(STORE).get('last'); const v = await new Promise<any>((res) => { req.onsuccess = () => res(req.result); req.onerror = () => res(null); }); db.close(); return v ?? null; } catch { return null; }
 }
-let timer = 0;
-export function scheduleSessionSave() { clearTimeout(timer); timer = window.setTimeout(() => { void saveSession(); }, 2500); }
+let timer = 0; let armed = false;
+/** Saving starts only once the restore offer has been answered, so a fresh page never overwrites the previous session. */
+export function armSession() { armed = true; }
+export function scheduleSessionSave() { if (!armed) return; clearTimeout(timer); timer = window.setTimeout(() => { void saveSession(); }, 2500); }
 
 // small persisted preferences (theme, printer, nozzle, material)
 export function loadPrefs(): Record<string, string> { try { return JSON.parse(localStorage.getItem('rf-prefs') || '{}'); } catch { return {}; } }

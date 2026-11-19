@@ -8,7 +8,7 @@ import { ctx, type Panel, dropToBed } from './ui/ctx';
 import { importFile } from './core/importers';
 import { exportSTL, export3MF, downloadBlob, resolveForExport, exportProject3MF } from './core/exporters';
 import { zipSync } from 'fflate';
-import { scheduleSessionSave, loadSession, loadPrefs, savePref } from './core/session';
+import { scheduleSessionSave, loadSession, loadPrefs, savePref, armSession } from './core/session';
 import { PRINTERS as PRINTER_LIST } from './data/materials';
 import { buildLegend } from './ui/legend';
 import { PRINTERS } from './data/materials';
@@ -202,9 +202,9 @@ async function main() {
   const saved = await loadSession();
   if (saved && saved.parts > 0) {
     const bar = h('div', { class: 'toast good', style: { position: 'fixed', left: '50%', transform: 'translateX(-50%)', top: '70px', zIndex: '300', display: 'flex', gap: '10px', alignItems: 'center' } }, `Previous session found (${saved.parts} part${saved.parts > 1 ? 's' : ''}, ${new Date(saved.when).toLocaleString()}).`,
-      btn('Restore', async () => { bar.remove(); project.remove(project.parts.map((p) => p.id), false); await importFiles([new File([saved.blob], 'session.3mf')]); viewer.fitView(); }, { primary: true }), btn('Dismiss', () => bar.remove()));
-    document.body.append(bar); setTimeout(() => bar.remove(), 20000);
-  }
+      btn('Restore', async () => { bar.remove(); project.remove(project.parts.map((p) => p.id), false); await importFiles([new File([saved.blob], 'session.3mf')]); viewer.fitView(); armSession(); }, { primary: true }), btn('Dismiss', () => { bar.remove(); armSession(); }));
+    document.body.append(bar); setTimeout(() => { if (bar.isConnected) { bar.remove(); armSession(); } }, 60000);
+  } else armSession();
   // ---------- starter part so the workspace is never empty
   if (!project.parts.length) { const m = makePrimitive('roundedBox', { w: 40, d: 30, h: 16, r: 0, r2: 0, seg: 32, teeth: 0, fillet: 3, pitch: 1.5, turns: 5 }); project.addManifold(m, 'Sample block', '#8fb3e8', false); project.select([]); viewer.fitView(); }
   void activeId;
