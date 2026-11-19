@@ -4,7 +4,7 @@
   "private": true,
   "description": "ResonanceForge: a self-contained 3D printing toolbox. Image/text to STL/3MF, textures, painting, joints, stress maps, settings and marketplace hub.",
   "type": "module",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",

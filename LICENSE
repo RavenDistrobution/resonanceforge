@@ -1,23 +1,39 @@
-MIT License
+ResonanceForge Non-Commercial License
+Version 1.0, November 2026
 
-Copyright (c) 2026 ResonanceForge contributors
+Copyright (c) 2026 MB. Distribution: RavenDistro.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. Grant. You may use, copy, modify and share this software and its source
+   code, in whole or in part, for personal, educational, research and other
+   NON-COMMERCIAL purposes, free of charge.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+2. No sale. You may not sell this software, any modified version of it, or
+   any distribution that contains it, and you may not charge for access to it.
+   Including it in a paid product, service or bundle is a sale.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+3. No ownership claims. You may not patent, trademark, register or otherwise
+   claim exclusive rights over this software or any part of it, including
+   methods, interfaces, prefabs and generated geometry logic contained in it.
 
-Bundled fonts (public/fonts) are licensed under the SIL Open Font License 1.1; see public/fonts/OFL.txt.
+4. Attribution and signature. Every copy or modified version must keep this
+   license, the NOTICE file, the embedded authorship signature in
+   src/brand/brand.ts and the bundled brand mark. Removing, altering or
+   disabling the signature check ends your rights under this license.
+
+5. Modifications. Modified versions must be clearly marked as modified and
+   must be shared under this same license.
+
+6. Printed objects. Objects you print from files you create with this software
+   are yours. This license covers the software, not the things you make with it.
+
+7. No warranty. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM,
+   DAMAGES OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
+
+8. Termination. Any breach of sections 2 to 5 terminates this license
+   automatically.
+
+Third-party components keep their own licenses: three.js (MIT), Manifold
+(Apache 2.0), three-mesh-bvh (MIT), opentype.js (MIT), fflate (MIT),
+qrcode-generator (MIT), Figtree and the other bundled fonts (SIL Open Font
+License 1.1, see public/fonts/OFL.txt).

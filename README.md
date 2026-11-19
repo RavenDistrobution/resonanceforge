@@ -96,4 +96,4 @@ Designed and authored by MB. Distribution: RavenDistro. The signature in `NOTICE
 
 ## Licence
 
-MIT. Bundled fonts are under the SIL Open Font License (see `public/fonts/OFL.txt`).
+**Non-commercial.** Free to use, modify and share for personal, educational and research use. No sale of the software or anything that bundles it, no patent or trademark claims over it, keep the notice and signature. Objects you print are yours. See `LICENSE`. Bundled fonts are under the SIL Open Font License (see `public/fonts/OFL.txt`).
