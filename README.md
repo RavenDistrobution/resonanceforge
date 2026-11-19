@@ -32,7 +32,7 @@ Panels are grouped as **Build** (Create, Text, Image, Patterns, Draw, Free draw)
 
 ## Use it online
 
-The app is published with GitHub Pages at **https://w3kmike.github.io/resonanceforge/** and runs entirely in your browser (no server, nothing uploaded). In Chrome or Edge, use the address bar's install icon to add it as a desktop app; it keeps working offline after the first visit. Every push to `main` redeploys it.
+The app is published with GitHub Pages at **https://ravendistrobution.github.io/resonanceforge/** and runs entirely in your browser (no server, nothing uploaded). In Chrome or Edge, use the address bar's install icon to add it as a desktop app; it keeps working offline after the first visit. Every push to `main` redeploys it.
 
 ## Quick start (run locally)
 
@@ -46,7 +46,7 @@ Requirements: a current browser (Chrome, Edge, Firefox or Safari). The launchers
 
 **Windows**
 
-1. Download the repo (Code > Download ZIP, or `git clone https://github.com/w3kmike/resonanceforge.git`) and unzip it.
+1. Download the repo (Code > Download ZIP, or `git clone https://github.com/RavenDistrobution/resonanceforge.git`) and unzip it.
 2. Double-click `start.bat`. It installs Node.js LTS if it is missing (via winget, or the official installer with a permission prompt), installs the packages on the first run, then opens your browser at http://127.0.0.1:5180.
 
 If Windows SmartScreen or Defender asks, allow the script: it only runs `npm install` and the local dev server. Use Chrome or Edge for the fastest geometry engine.
