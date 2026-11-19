@@ -42,7 +42,11 @@ Requirements: [Node.js](https://nodejs.org) 18 or newer and a current browser (C
 
 **Windows**
 
-Double-click `start.bat` (or run it from a terminal).
+1. Install Node.js LTS from https://nodejs.org (tick "Add to PATH").
+2. Download the repo (Code > Download ZIP, or `git clone https://github.com/w3kmike/resonanceforge.git`) and unzip it.
+3. Double-click `start.bat`. The first run installs packages (a minute or two), then your browser opens at http://127.0.0.1:5180.
+
+If Windows SmartScreen or Defender asks, allow the script: it only runs `npm install` and the local dev server. Use Chrome or Edge for the fastest geometry engine.
 
 The first run installs dependencies. The script checks that the port is free, offers to clear it or pick the next free one, then opens `http://127.0.0.1:5180`. Set `PORT=6000` (or any number) before running to use a different port.
 
