@@ -30,9 +30,13 @@ Export STL (binary), 3MF (units, multiple objects, colours) or a **ZIP with one 
 
 Panels are grouped as **Build** (Create, Text, Image, Patterns, Draw, Free draw), **Shape** (Parts, Joints, Texture, Paint) and **Print** (Analyze, Print settings, Share).
 
-## Quick start
+## Use it online
 
-Requirements: [Node.js](https://nodejs.org) 18 or newer and a current browser (Chrome, Edge, Firefox or Safari).
+The app is published with GitHub Pages at **https://w3kmike.github.io/resonanceforge/** and runs entirely in your browser (no server, nothing uploaded). In Chrome or Edge, use the address bar's install icon to add it as a desktop app; it keeps working offline after the first visit. Every push to `main` redeploys it.
+
+## Quick start (run locally)
+
+Requirements: a current browser (Chrome, Edge, Firefox or Safari). The launchers install [Node.js](https://nodejs.org) LTS for you if it is missing.
 
 **macOS / Linux**
 
@@ -42,13 +46,12 @@ Requirements: [Node.js](https://nodejs.org) 18 or newer and a current browser (C
 
 **Windows**
 
-1. Install Node.js LTS from https://nodejs.org (tick "Add to PATH").
-2. Download the repo (Code > Download ZIP, or `git clone https://github.com/w3kmike/resonanceforge.git`) and unzip it.
-3. Double-click `start.bat`. The first run installs packages (a minute or two), then your browser opens at http://127.0.0.1:5180.
+1. Download the repo (Code > Download ZIP, or `git clone https://github.com/w3kmike/resonanceforge.git`) and unzip it.
+2. Double-click `start.bat`. It installs Node.js LTS if it is missing (via winget, or the official installer with a permission prompt), installs the packages on the first run, then opens your browser at http://127.0.0.1:5180.
 
 If Windows SmartScreen or Defender asks, allow the script: it only runs `npm install` and the local dev server. Use Chrome or Edge for the fastest geometry engine.
 
-The first run installs dependencies. The script checks that the port is free, offers to clear it or pick the next free one, then opens `http://127.0.0.1:5180`. Set `PORT=6000` (or any number) before running to use a different port.
+On macOS the script installs Node via Homebrew or the official package if needed. The first run installs dependencies. The script checks that the port is free, offers to clear it or pick the next free one, then opens `http://127.0.0.1:5180`. Set `PORT=6000` (or any number) before running to use a different port.
 
 Production build (static files you can host anywhere or open with any static server):
 

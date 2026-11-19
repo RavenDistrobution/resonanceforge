@@ -1,0 +1,14 @@
+{
+  "name": "ResonanceForge",
+  "short_name": "ResonanceForge",
+  "description": "Self-contained 3D printing studio: model, texture, joint, analyse and prepare parts, export STL/3MF.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef1f6",
+  "theme_color": "#2a78d6",
+  "icons": [
+    { "src": "icon.png", "sizes": "166x166", "type": "image/png", "purpose": "any" },
+    { "src": "icon.png", "sizes": "166x166", "type": "image/png", "purpose": "maskable" }
+  ]
+}

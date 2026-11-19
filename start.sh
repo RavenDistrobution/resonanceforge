@@ -14,17 +14,34 @@ say()  { printf '\033[1;34m[%s]\033[0m %s\n' "$APP_NAME" "$*"; }
 warn() { printf '\033[1;33m[%s]\033[0m %s\n' "$APP_NAME" "$*"; }
 die()  { printf '\033[1;31m[%s]\033[0m %s\n' "$APP_NAME" "$*" >&2; exit 1; }
 
-# ---- preflight tooling
-command -v node >/dev/null 2>&1 || die "Node.js is not installed. Get it from https://nodejs.org (LTS, 18 or newer), then run ./start.sh again."
+# ---- preflight tooling (installs Node.js LTS if it is missing)
+if ! command -v node >/dev/null 2>&1; then
+  warn "Node.js is not installed. Installing Node.js LTS (one-time)..."
+  if command -v brew >/dev/null 2>&1; then brew install node@22 >/dev/null 2>&1 || brew install node; brew link --overwrite node@22 >/dev/null 2>&1 || true
+  elif [ "$(uname)" = "Darwin" ]; then
+    PKG="/tmp/node-lts.pkg"; VER="$(curl -fsSL https://nodejs.org/dist/index.json | grep -o '"version":"v[0-9.]*","date":"[^"]*","files":\[[^]]*\],"npm":"[^"]*","v8":"[^"]*","uv":"[^"]*","zlib":"[^"]*","openssl":"[^"]*","modules":"[^"]*","lts":"[A-Za-z]' | head -1 | sed 's/"version":"\(v[0-9.]*\)".*/\1/')"
+    [ -n "$VER" ] || die "Could not determine the Node.js LTS version. Install it from https://nodejs.org and run ./start.sh again."
+    ARCH="$(uname -m)"; [ "$ARCH" = "arm64" ] || ARCH="x64"
+    curl -fL "https://nodejs.org/dist/$VER/node-$VER.pkg" -o "$PKG" || die "Download failed. Install Node.js from https://nodejs.org."
+    say "Running the installer (you will be asked for your password)..."; sudo installer -pkg "$PKG" -target / || die "Install failed. Install Node.js from https://nodejs.org."
+    rm -f "$PKG"; export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
+  elif command -v apt-get >/dev/null 2>&1; then curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs
+  elif command -v dnf >/dev/null 2>&1; then sudo dnf install -y nodejs npm
+  elif command -v pacman >/dev/null 2>&1; then sudo pacman -S --noconfirm nodejs npm
+  else die "Could not install Node.js automatically. Get it from https://nodejs.org (LTS), then run ./start.sh again."; fi
+  command -v node >/dev/null 2>&1 || die "Node.js still not found. Open a new terminal (so PATH refreshes) and run ./start.sh again."
+fi
 command -v npm  >/dev/null 2>&1 || die "npm is missing. Reinstall Node.js from https://nodejs.org."
 NODE_MAJOR="$(node -p 'process.versions.node.split(".")[0]')"
 [ "$NODE_MAJOR" -ge 18 ] || die "Node.js 18 or newer is required (found $(node -v))."
 command -v lsof >/dev/null 2>&1 || warn "lsof not found; port check will be skipped."
 
 # ---- dependencies
-if [ ! -d node_modules ] || [ ! -f node_modules/.package-lock.json ]; then
+if [ ! -d node_modules ] || [ ! -f node_modules/.package-lock.json ] || [ ! -d node_modules/vite ] || [ ! -d node_modules/manifold-3d ]; then
   say "Installing dependencies (first run only)..."
-  npm install
+  npm install --no-audit --no-fund
+else
+  say "Dependencies already installed."
 fi
 
 # ---- port handling

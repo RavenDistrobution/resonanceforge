@@ -210,3 +210,5 @@ async function main() {
   void activeId;
 }
 main();
+// installable app: register the service worker on real hosts (not the dev server) so the page works offline once visited
+if ('serviceWorker' in navigator && !location.hostname.startsWith('127.') && location.hostname !== 'localhost') { window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => { /* optional */ }); }); }
