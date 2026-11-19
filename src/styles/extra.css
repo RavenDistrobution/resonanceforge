@@ -1,0 +1,23 @@
+/* Extra classes for glass v2 pages: tier pills, link buttons, a second left-edge picker drawer (.ag-tab/.ag-list), .two grid, defs, path-draw animation. Append after tokens.css. */
+
+.pill.tier-high{color:var(--good-text);border-color:var(--good)} .pill.tier-mid{color:var(--ink-2)} .pill.tier-low{color:var(--serious);border-color:var(--serious)} .pill.tier-gaming{color:var(--critical);border-color:var(--critical)}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+.links a{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow);color:var(--ink);text-decoration:none;font-size:13.5px}
+.links a:hover{background:var(--glass-2)}
+.ag-tab{position:fixed;left:0;top:calc(50% - 150px);transform:translateY(-50%);z-index:150;writing-mode:vertical-rl;border-radius:0 12px 12px 0;padding:14px 8px;display:flex;gap:8px;align-items:center;font-size:12.5px;border-left:0;box-shadow:var(--glass-shadow)}
+.ag-tab .ico{transform:rotate(90deg)}
+.ag-list{list-style:none;margin:0;padding:0}
+.ag-list li{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;padding:8px 8px;border-radius:12px;cursor:pointer;font-size:13.5px}
+.ag-list li:hover{background:var(--glass-2)} .ag-list li.sel{background:var(--ink);color:var(--surface)} .ag-list li.sel .pill{color:inherit;border-color:currentColor}
+.ag-list .rk{font-variant-numeric:tabular-nums;font-weight:600;color:var(--muted)} .ag-list li.sel .rk{color:inherit}
+.ag-list .sc{font-variant-numeric:tabular-nums;font-size:12px}
+.sec{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap} .sec .pill{font-size:12px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(128px,1fr))}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px}
+.two svg .tick{font-size:14px} .two svg .lbl{font-size:15px} .two svg .val{font-size:14px}
+.defs dt{font-weight:600;margin-top:8px} .defs dd{margin:0 0 4px;color:var(--ink-2);font-size:13.5px}
+.chk-list{padding-left:18px} .chk-list li{margin:5px 0}
+.badge{display:inline-block;padding:2px 8px;border-radius:8px;background:var(--glass-2);border:1px solid var(--glass-edge);font-size:12px;font-variant-numeric:tabular-nums}
+.path-draw{stroke-dasharray:2400;stroke-dashoffset:2400;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1)} .on .path-draw{stroke-dashoffset:0}
+@media (prefers-reduced-motion:reduce){.path-draw{stroke-dashoffset:0!important;transition:none!important}}
+@media print{.ag-tab{display:none!important}.path-draw{stroke-dashoffset:0!important}}

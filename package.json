@@ -1,0 +1,28 @@
+{
+  "name": "resonanceforge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ResonanceForge: a self-contained 3D printing toolbox. Image/text to STL/3MF, textures, painting, joints, stress maps, settings and marketplace hub.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "start": "vite --host 127.0.0.1 --open"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "manifold-3d": "^3.5.5",
+    "opentype.js": "^1.3.4",
+    "qrcode-generator": "^2.0.4",
+    "three": "^0.187.0",
+    "three-mesh-bvh": "^0.9.18"
+  },
+  "devDependencies": {
+    "@types/opentype.js": "^1.3.8",
+    "@types/three": "^0.187.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.3.0"
+  }
+}
